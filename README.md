@@ -19,3 +19,8 @@ Start with
 dcrawps -X -G 20 -T input.dng
 
 to get an impression of the level of movement in your DNG PS image.
+
+
+You can find (Windows) binaries at:
+
+http://www.v7f.eu/public/pentax
