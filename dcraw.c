@@ -8684,7 +8684,7 @@ void CLASS identify()
     { left_margin = 10; width  = 4950; filters = 0x16161616; }
   if (width == 4736 && !strcmp(model,"K-7"))
     { height  = 3122;   width  = 4684; filters = 0x16161616; top_margin = 2; }
-  if (!strcmp(model,"K-3 II"))
+  if (!strcmp(model,"K-3 II") || !strcmp(model,"K-1"))
       { is_PS= ((is_raw == 4) && !did_select); }
   if (width == 6080 && !strncmp(model,"K-3", 3))
       { left_margin = 4;  width  = 6040; }
