@@ -28,7 +28,7 @@
  * Copyright 2015 by Tom Vijlbrief, tvijlbrief a google mail
  */
 
-#define DCRAW_VERSION "9.26 Pentax PS v0.65"
+#define DCRAW_VERSION "9.26 Pentax PS v0.70"
 
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
@@ -7814,7 +7814,7 @@ void CLASS adobe_coeff (const char *make, const char *model)
 	{ 9895,-3077,-850,-5304,13035,2521,-883,1768,6936 } },
     { "Pentax K-3 II", 0, 0, /* identical to K-3 ? */
 	{ 7415,-2052,-721,-5186,12788,2682,-1446,2157,6773 } },
-	{ "Pentax K-3", 0, 0,
+    { "Pentax K-3", 0, 0,
 	{ 7415,-2052,-721,-5186,12788,2682,-1446,2157,6773 } },
     { "Pentax K-5 II", 0, 0,
 	{ 8170,-2725,-639,-4440,12017,2744,-771,1465,6599 } },
