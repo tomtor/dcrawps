@@ -6400,7 +6400,7 @@ void load_PS()
 
 int bad_green_diff(int a, int b)
 {
-  int ad= (a > b ? a - b : b - a) * 100 / (a > b ? a : b);
+  int ad= (a > b ? a - b : b - a) * 100 / ((a > b ? a : b) + 1);
   return (ad > GA_threshold);
 }
 
