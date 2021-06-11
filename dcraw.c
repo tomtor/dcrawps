@@ -28,7 +28,7 @@
  * Copyright 2015 by Tom Vijlbrief, tvijlbrief a google mail
  */
 
-#define DCRAW_VERSION "9.26 Pentax PS v0.71"
+#define DCRAW_VERSION "9.26 Pentax PS v2021-1"
 
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
