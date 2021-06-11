@@ -7146,6 +7146,7 @@ void CLASS parse_foveon()
  */
 void CLASS adobe_coeff (const char *make, const char *model)
 {
+  printf("make: %s model: %s\n", make, model);
   static const struct {
     const char *prefix;
     short black, maximum, trans[12];
@@ -8658,6 +8659,7 @@ void CLASS identify()
      *cp = 0;
   if (!strncasecmp(model,"PENTAX",6))
     strcpy (make, "Pentax");
+  printf("MODEL:%s MAKE:%s\n", model, make);
   cp = make + strlen(make);		/* Remove trailing spaces */
   while (*--cp == ' ') *cp = 0;
   cp = model + strlen(model);
@@ -8684,7 +8686,8 @@ void CLASS identify()
     { left_margin = 10; width  = 4950; filters = 0x16161616; }
   if (width == 4736 && !strcmp(model,"K-7"))
     { height  = 3122;   width  = 4684; filters = 0x16161616; top_margin = 2; }
-  if (!strcmp(model,"K-3 II") || !strcmp(model,"K-1") || !strcmp(model,"K-70"))
+  if (!strcmp(model,"K-3 II") || !strcmp(model,"K-1") || !strcmp(model,"K-70")
+  || !strcmp(model, "K-3 Mark III"))
       { is_PS= ((is_raw == 4) && !did_select); }
   if (width == 6080 && !strncmp(model,"K-3", 3))
       { left_margin = 4;  width  = 6040; }
