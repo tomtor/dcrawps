@@ -25,7 +25,8 @@
 
 /*
  * Pentax PS and Artifact Detection support is GPL licensed:
- * Copyright 2015 by Tom Vijlbrief, tvijlbrief a google mail
+ * Copyright 2015 by Tom Vijlbrief, tvijlbrief at google mail
+ * Copyright 2021 by Tom Vijlbrief and Terry Duell (tduell at iinet.net.au)
  */
 
 #define DCRAW_VERSION "9.26 Pentax PS v2021-1"
@@ -7146,7 +7147,6 @@ void CLASS parse_foveon()
  */
 void CLASS adobe_coeff (const char *make, const char *model)
 {
-  printf("make: %s model: %s\n", make, model);
   static const struct {
     const char *prefix;
     short black, maximum, trans[12];
@@ -7801,6 +7801,8 @@ void CLASS adobe_coeff (const char *make, const char *model)
 	{ 9566,-2863,-803,-7170,15172,2112,-818,803,9705 } },
     { "Pentax K1", 0, 0,
 	{ 11095,-3157,-1324,-8377,15834,2720,-1108,947,11688 } },
+    { "Pentax K-1 Mark II", 0, 0,         /* TLD */
+        { 8952,-2869,-1256,-3612,12204,1550,-934,1757,6549 } },
     { "Pentax K20D", 0, 0,
 	{ 9427,-2714,-868,-7493,16092,1373,-2199,3264,7180 } },
     { "Pentax K200D", 0, 0,
@@ -7813,8 +7815,14 @@ void CLASS adobe_coeff (const char *make, const char *model)
 	{ 8843,-2837,-625,-5025,12644,2668,-411,1234,7410 } },
     { "Pentax K-r", 0, 0,
 	{ 9895,-3077,-850,-5304,13035,2521,-883,1768,6936 } },
-    { "Pentax K-3 II", 0, 0, /* identical to K-3 ? */
-	{ 7415,-2052,-721,-5186,12788,2682,-1446,2157,6773 } },
+    { "Pentax K-3 II", 0, 0,
+        { 7415,-2052,-721,-5186,12788,2682,-1446,2157,6773 } },
+    { " Pentax KP", 0, 0,                /* TLD */
+        { 8617,-3228,-1034,-4674,12821,2044,-803,1577,5728 } },
+    { "Pentax K-3 Mark III", 0, 0,      /* TLD */
+	{ 9251,-3817,-1069,-4627,12667,2175,-798,1660,5633 } },
+    { "Pentax K-70", 0, 0,
+        { 8113,-2078,-1275,-4359,12953,1514,-1091,1955,6044 } },
     { "Pentax K-3", 0, 0,
 	{ 7415,-2052,-721,-5186,12788,2682,-1446,2157,6773 } },
     { "Pentax K-5 II", 0, 0,
@@ -8659,7 +8667,7 @@ void CLASS identify()
      *cp = 0;
   if (!strncasecmp(model,"PENTAX",6))
     strcpy (make, "Pentax");
-  printf("MODEL:%s MAKE:%s\n", model, make);
+  // printf("MODEL:%s MAKE:%s\n", model, make);
   cp = make + strlen(make);		/* Remove trailing spaces */
   while (*--cp == ' ') *cp = 0;
   cp = model + strlen(model);
@@ -8685,12 +8693,24 @@ void CLASS identify()
   if (width >= 4960 && !strncmp(model,"K-5",3))
     { left_margin = 10; width  = 4950; filters = 0x16161616; }
   if (width == 4736 && !strcmp(model,"K-7"))
-    { height  = 3122;   width  = 4684; filters = 0x16161616; top_margin = 2; }
-  if (!strcmp(model,"K-3 II") || !strcmp(model,"K-1") || !strcmp(model,"K-70")
-  || !strcmp(model, "K-3 Mark III"))
-      { is_PS= ((is_raw == 4) && !did_select); }
+    { height  = 3122;   width  = 4684; filters = 0x16161616; top_margin = 2; }   
+  if (!strcmp(model,"K-3 II")
+   || !strcmp(model,"K-1")
+   || !strcmp(model,"K-70")
+   || !strcmp(model, "K-3 Mark III")
+   || !strcmp(model,"KP")
+   || !strcmp(model,"K-1 Mark II"))
+    { is_PS= ((is_raw == 4) && !did_select); }
   if (width == 6080 && !strncmp(model,"K-3", 3))
-      { left_margin = 4;  width  = 6040; }
+      { left_margin = 10;  width  = 6038; }
+  if (width == 6112 && !strncmp(model,"KP", 2))
+      {left_margin == 54; width = 6082; }
+  if (width == 6304 && ! strncmp(model,"K-3 Mark III", 12))
+      {left_margin = 26; width = 6250; }
+  if  (width == 7392 && ! strncmp(model,"K-1", 3))
+      {left_margin = 6; width = 7382; }
+  if  (width == 7392 && ! strncmp(model,"K-1 Mark II", 11))
+      {left_margin = 6; width = 7382; }
   if (width == 7424 && !strcmp(model,"645D"))
     { height  = 5502;   width  = 7328; filters = 0x61616161; top_margin = 29;
       left_margin = 48; }

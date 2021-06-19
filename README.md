@@ -25,3 +25,12 @@ to get an impression of the level of movement in your DNG PS image.
 You can find (Windows) binaries at:
 
 http://www.v7f.eu/public/pentax
+
+
+## 2021 update
+
+New Pentax Models: K-1 Mark II, KP, K-3 Mark III, K-70
+
+Code contributed by Terry Duell (tduell at iinet.net.au)
+
+Note: only Linux binary has been updated
