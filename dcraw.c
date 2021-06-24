@@ -29,7 +29,7 @@
  * Copyright 2021 by Tom Vijlbrief and Terry Duell (tduell at iinet.net.au)
  */
 
-#define DCRAW_VERSION "9.26 Pentax PS v2021-1"
+#define DCRAW_VERSION "9.26 Pentax PS v2021-2"
 
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
