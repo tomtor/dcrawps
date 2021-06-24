@@ -8704,7 +8704,7 @@ void CLASS identify()
   if (width == 6080 && !strncmp(model,"K-3", 3))
       { left_margin = 10;  width  = 6038; }
   if (width == 6112 && !strncmp(model,"KP", 2))
-      {left_margin == 54; width = 6082; }
+      {left_margin = 54; width = 6082; }
   if (width == 6304 && ! strncmp(model,"K-3 Mark III", 12))
       {left_margin = 26; width = 6250; }
   if  (width == 7392 && ! strncmp(model,"K-1", 3))
