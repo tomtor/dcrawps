@@ -48,7 +48,11 @@
 #include <time.h>
 #include <sys/types.h>
 
-#if defined(DJGPP) || defined(__MINGW32__)
+#if defined(_MSC_VER) && !defined(WIN32)
+#define WIN32
+#endif
+
+#if defined(DJGPP) || defined(__MINGW32__) || defined(_MSC_VER)
 #define fseeko fseek
 #define ftello ftell
 #else
